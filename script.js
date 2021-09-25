@@ -4,6 +4,15 @@ d3.csv('cities.csv',d3.autoType).then(data=>{
     
 let european = data.filter(d => d.eu == true )
 console.log(european);
+let num_cities = european.length
+
+const city_count = d3.select('.city-count')
+
+city_count.selectAll("text")
+    .data('1')
+    .enter()
+    .append("text")
+    .text(d=>"Number of Cities: "+ num_cities)
 
 
 const width = 700;
@@ -24,6 +33,7 @@ svg.selectAll("circle")
         return d.x;
      
     })
+    .attr('fill',"blue")
     .attr('cy', function (d){
         return d.y;
     })
